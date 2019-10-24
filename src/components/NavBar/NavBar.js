@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 import { StaticQuery, graphql } from 'gatsby';
+import { Container, Navbar, Nav } from 'react-bootstrap';
 
 import './NavBar.css';
 
@@ -8,6 +9,13 @@ const NavBar = ({ active }) => (
   <StaticQuery
     query={graphql`
       query NavbarQuery {
+        file(relativePath: { eq: "Oality-150-white.png" }) {
+          childImageSharp {
+            fixed(width: 150) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
         ploneNavigation(_path: { eq: "/" }) {
           items {
             _id
@@ -36,33 +44,23 @@ const NavBar = ({ active }) => (
         .concat(data.allPloneFile.edges.map(edge => edge.node._path))
         .concat(data.allPloneImage.edges.map(edge => edge.node._path));
       return (
-        <nav className="navbar">
-          <div className="navbar-container">
-            <Link to="/" className="navbar-brand">
-              Gatsby Starter Plone
-            </Link>
-            <ol className="navbar-menu">
-              <li className="navbar-item">
-                <Link to="/">Home</Link>
-              </li>
-              {data.ploneNavigation.items
-                .filter(item => !skip.includes(item._path))
-                .map(item => (
-                  <li
-                    key={item._id}
-                    className={
-                      item._path === active ||
-                      (active || '').startsWith(item._path)
-                        ? 'navbar-item active'
-                        : 'navbar-item'
-                    }
-                  >
-                    <Link to={item._path}>{item.title}</Link>
-                  </li>
-                ))}
-            </ol>
-          </div>
-        </nav>
+        <Navbar expand="lg" variant="dark" fixed="top">
+          <Container>
+            <Navbar.Brand href="/">
+              <Img fixed={data.file.childImageSharp.fixed} alt="" />
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="ml-auto" activeKey={active}>
+                {data.ploneNavigation.items
+                  .filter(item => !skip.includes(item._path))
+                  .map((item, i) => (
+                    <Nav.Link href={item._path} key={i}>{item.title}</Nav.Link>
+                  ))}
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
       );
     }}
   />

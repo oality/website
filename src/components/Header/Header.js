@@ -5,7 +5,7 @@ import './Header.css';
 const Header = ({ siteData }) => (
   <header
     style={{
-      background: '#113156',
+      background: '#0c7b24',
     }}
   >
     <div

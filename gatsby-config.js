@@ -1,14 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: 'Kickstart Gatsby static site development with Plone',
-    subTitle: 'Plone + Gatsby = \u2764',
+    title: 'Vos solutions informatiques',
+    subTitle: 'Ouvertes et de qualités',
+    author: 'Bneoît Suttor',
   },
   pathPrefix: '/',
   plugins: [
     {
       resolve: 'gatsby-source-plone',
       options: {
-        baseUrl: 'https://plonedemo.kitconcept.com/en',
+        baseUrl: 'https://backend.oality.com/fr',
         logLevel: 'DEBUG',
       },
     },
@@ -21,18 +22,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Gatsby Starter Plone',
-        short_name: 'Plone',
+        name: 'Oality website',
+        short_name: 'Oality',
         start_url: '/',
         background_color: '#ffffff',
         theme_color: '#007eb6',
         display: 'standalone',
-        icon: 'src/images/icon.png',
+        icon: 'src/static/icon.png',
+      },
     },
-  },
     'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    `gatsby-plugin-sass`,
   ],
 };

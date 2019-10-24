@@ -1,8 +1,25 @@
 .navbar {
-  background-color: #007eb6;
+  background-color: #00b627;
+  opacity: 0.9;
   color: #ffffff;
+  font-weight: bold;
+  padding-top: 0rem;
+}
+.navbar-nav {
+  padding: 1em;
+}
+
+/*
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #00b627;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+*/
+header {
+  margin-top: 6em;
 }
 
 .navbar-container {
@@ -15,9 +32,9 @@
 
 .navbar-brand {
   font-weight: bold;
-  padding: 8px 0;
+  padding: 0;
 }
-
+/*
 .navbar-menu {
   display: flex;
   list-style: none;
@@ -26,20 +43,22 @@
 
 .navbar-item {
   margin: 0;
+  padding: 0 1em;
   display: flex;
+  align-items: center;
+}
+*/
+
+a.navbar-link:hover,
+a.navbar-link.active {
+  background-color: #0c7b24;
 }
 
-.navbar-item a {
-  padding: 8px;
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  padding: 1em;
 }
-
-.navbar-item:hover,
-.navbar-item.active {
-  background-color: #113156;
-}
-
-.navbar-item > a,
-.navbar-brand {
-  color: #ffffff;
-  text-decoration: none;
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
+  color: #fff;
+  background-color: #0c7b24;
 }

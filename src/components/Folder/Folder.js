@@ -4,6 +4,7 @@ import RichText from '../RichText';
 
 import './Folder.css';
 
+
 const Folder = ({ data, title, images = [], files = [] }) => {
   const listedTypes = new Set([
     'Document',
@@ -19,10 +20,8 @@ const Folder = ({ data, title, images = [], files = [] }) => {
   }, {});
   return (
     <nav key={data._id}>
-      <h1>{title ? title : data.title}</h1>
-      <p>
-        <strong>{data.description}</strong>
-      </p>
+      {title === 'Contents' ? null : <h1>{title}</h1> ? title : <h1>{data.title}</h1>}
+      {data.description ? <p><strong>{data.description}</strong></p>: null}
       {data.text ? (
         <RichText serialized={data.text.react} images={images} files={files} />
       ) : null}
@@ -81,6 +80,13 @@ export const query = graphql`
       _type
       description
       title
+    }
+    image {
+      childImageSharp {
+        fixed(width: 200) {
+          ...GatsbyImageSharpFixed
+        }
+      }
     }
     _path
   }

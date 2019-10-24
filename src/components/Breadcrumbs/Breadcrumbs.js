@@ -1,21 +1,17 @@
 import React from 'react';
-import { Link } from 'gatsby';
-
 import './Breadcrumbs.css';
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import Container from 'react-bootstrap/Container'
 
 const Breadcrumbs = ({ data }) => (
-  <nav className="breadcrumb-container">
-    <ol className="breadcrumb">
-      <li className="breadcrumb-item">
-        <Link to="/">Home</Link>
-      </li>
+  <Container fluid className="breadcrumb-container">
+    <Breadcrumb>
+      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
       {data.items.map(item => (
-        <li key={item._id} className="breadcrumb-item">
-          <Link to={item._path}>{item.title}</Link>
-        </li>
+        <Breadcrumb.Item href={item._path}>{item.title}</Breadcrumb.Item>
       ))}
-    </ol>
-  </nav>
+    </Breadcrumb>
+  </Container>
 );
 
 export default Breadcrumbs;

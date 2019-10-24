@@ -7,7 +7,7 @@
 import React from 'react';
 import { LocationProvider } from '@reach/router';
 import { navigate } from 'gatsby';
-
+import './src/styles/styles.sass';
 const isIos = () => {
   const userAgent = window.navigator.userAgent.toLowerCase();
   return /iphone|ipad|ipod/.test(userAgent);
@@ -20,7 +20,6 @@ const useStickyLocation = current => {
     navigate(previous);
   }
 };
-
 
 export const wrapRootElement = ({ element }) => (
   <LocationProvider>

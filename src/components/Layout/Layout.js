@@ -34,7 +34,7 @@ const Layout = ({ breadcrumbs, children, data }) => (
           <Helmet
             title={data.site.siteMetadata.title}
             meta={[
-              { name: 'description', content: 'Gatsby Starter Plone' },
+              { name: 'description', content: 'Gatsby Starter for Plone' },
               { name: 'keywords', content: 'gatsby, plone' },
             ]}
           />
