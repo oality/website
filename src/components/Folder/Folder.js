@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import RichText from '../RichText';
 
+import { Container, Row, Col } from 'react-bootstrap';
 import './Folder.css';
 
 
@@ -19,13 +20,13 @@ const Folder = ({ data, title, images = [], files = [] }) => {
     return result;
   }, {});
   return (
-    <nav key={data._id}>
-      {title === 'Contents' ? null : <h1>{title}</h1> ? title : <h1>{data.title}</h1>}
+    <Container>
+      {title ? <h1>{title}</h1> : <h1>{data.title}</h1>}
       {data.description ? <p><strong>{data.description}</strong></p>: null}
       {data.text ? (
         <RichText serialized={data.text.react} images={images} files={files} />
       ) : null}
-      <ul className="list-group">
+      <Row>
         {data.items
           .filter(
             item =>
@@ -33,8 +34,8 @@ const Folder = ({ data, title, images = [], files = [] }) => {
               !['/frontpage/', '/front-page/'].includes(item._path)
           )
           .map(item => (
-            <li key={item._path} className="list-group-item">
-              <p>
+            <Col>
+              <h2>
                 {byPath[item._path] ? (
                   <a
                     href={byPath[item._path].file.publicURL}
@@ -45,12 +46,12 @@ const Folder = ({ data, title, images = [], files = [] }) => {
                 ) : (
                   <Link to={item._path}>{item.title}</Link>
                 )}
-              </p>
+              </h2>
               {item.description ? <p>{item.description}</p> : null}
-            </li>
+            </Col>
           ))}
-      </ul>
-    </nav>
+      </Row>
+    </Container>
   );
 };
 
