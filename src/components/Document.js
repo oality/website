@@ -1,8 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import RichText from './RichText';
+import { Jumbotron } from 'react-bootstrap';
 
 const Document = ({ data, images = [], files = [] }) => (
+  <Jumbotron>
   <article key={data._id}>
     <h1>{data.title}</h1>
     {data.description ? (
@@ -14,6 +16,7 @@ const Document = ({ data, images = [], files = [] }) => (
       <RichText serialized={data.text.react} images={images} files={files} />
     ) : null}
   </article>
+  </Jumbotron>
 );
 
 export default Document;

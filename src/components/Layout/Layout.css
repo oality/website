@@ -38,13 +38,15 @@ template {
   display: none;
 }
 a {
-  color: inherit;
+  color: #0c7b24;
+  /*color: inherit;*/
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 a:active,
 a:hover {
   outline-width: 0;
+  color: hsla(0, 0%, 0%, 0.8);
   text-decoration: underline;
 }
 abbr[title] {
@@ -199,8 +201,8 @@ html {
   box-sizing: inherit;
 }
 body {
-  /*color: hsla(0, 0%, 0%, 0.8);*/
-  color: #0c7b24;
+  color: hsla(0, 0%, 0%, 0.8);
+  /*color: #0c7b24;*/
   font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
   word-wrap: break-word;
@@ -624,4 +626,8 @@ pre tt:after {
   html {
     font-size: 100%;
   }
+}
+.jumbotron {
+  background-color: #f9f9f9;
+  border-radius: 1rem;
 }

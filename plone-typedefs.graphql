@@ -1,4 +1,4 @@
-### Type definitions saved at 2019-10-23T11:49:02.293Z ###
+### Type definitions saved at 2019-11-21T13:42:55.042Z ###
 
 type PloneSite implements Node @dontInfer {
   description: String
@@ -299,11 +299,11 @@ type PloneCollection implements Node @dontInfer {
   item_count: Int
   items: [PloneCollectionItems]
   items_total: Int
-  language: String
   layout: String
   limit: Int
   modified: Date @dateformat
   review_state: String
+  sort_on: String
   sort_reversed: Boolean
   text: PloneCollectionText
   title: String
@@ -371,7 +371,7 @@ type PloneCollection_componentsNavigation {
   items: [PloneCollection_componentsNavigationItems]
   _path: String
   _id: String
-  nodes: [PloneDocumentPloneFolderPloneSiteUnion] @link(by: "id", from: "nodes___NODE")
+  nodes: [PloneDocumentPloneFolderPloneLRFPloneSiteUnion] @link(by: "id", from: "nodes___NODE")
 }
 
 type PloneCollection_componentsNavigationItems {
@@ -413,6 +413,7 @@ type PloneDocument implements Node @dontInfer {
   modified: Date @dateformat
   review_state: String
   rights: String
+  subjects: [String]
   table_of_contents: Boolean
   text: PloneDocumentText
   title: String
@@ -723,9 +724,9 @@ type PloneImage implements Node @dontInfer {
   exclude_from_nav: Boolean
   image: File @link(by: "id", from: "image___NODE")
   is_folderish: Boolean
-  language: String
   layout: String
   modified: Date @dateformat
+  rights: String
   title: String
   version: String
   _path: String
@@ -769,7 +770,7 @@ type PloneImage_componentsNavigation {
   items: [PloneImage_componentsNavigationItems]
   _path: String
   _id: String
-  nodes: [PloneDocumentPloneFolderPloneSiteUnion] @link(by: "id", from: "nodes___NODE")
+  nodes: [PloneDocumentPloneFolderPloneLRFPloneSiteUnion] @link(by: "id", from: "nodes___NODE")
 }
 
 type PloneImage_componentsNavigationItems {
@@ -898,6 +899,7 @@ type PloneLRF implements Node @dontInfer {
   created: Date @dateformat
   creators: [String]
   description: String
+  effective: Date @dateformat
   exclude_from_nav: Boolean
   is_folderish: Boolean
   items: [PloneLRFItems]
@@ -912,7 +914,7 @@ type PloneLRF implements Node @dontInfer {
   _components: PloneLRF_components
   _id: String
   _type: String
-  nodes: [PloneDocumentPloneFolderPloneLIFUnion] @link(by: "id", from: "nodes___NODE")
+  nodes: [PloneCollectionPloneDocumentPloneFolderPloneLIFUnion] @link(by: "id", from: "nodes___NODE")
   _parent: PloneLRF_parent
   _backlinks: [String]
 }
@@ -979,7 +981,7 @@ type PloneLRF_componentsWorkflow {
   _id: String
 }
 
-union PloneDocumentPloneFolderPloneLIFUnion = PloneDocument | PloneFolder | PloneLIF
+union PloneCollectionPloneDocumentPloneFolderPloneLIFUnion = PloneCollection | PloneDocument | PloneFolder | PloneLIF
 
 type PloneLRF_parent {
   description: String

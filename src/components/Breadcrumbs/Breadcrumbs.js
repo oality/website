@@ -8,7 +8,7 @@ const Breadcrumbs = ({ data }) => (
     <Breadcrumb>
       <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
       {data.items.map(item => (
-        <Breadcrumb.Item href={item._path}>{item.title}</Breadcrumb.Item>
+        <Breadcrumb.Item href={item._path} key={item._id}>{item.title}</Breadcrumb.Item>
       ))}
     </Breadcrumb>
   </Container>
