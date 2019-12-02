@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout';
 import RichText from '../components/RichText';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Carousel, Container, Row, Col } from 'react-bootstrap';
 
 import './index.css';
 // const nodes = query => (query ? query['edges'] : []).map(edge => edge.node);
@@ -22,6 +22,8 @@ const IndexPage = ({ data }) => (
             </Col>
           </Row>
         ))}
+    </Container>
+    <Carousel>
 
       {data.allPloneDocument.edges
         .filter(
@@ -30,25 +32,16 @@ const IndexPage = ({ data }) => (
             item.node._id !== 'copy_of_front-page'
         )
         .map(({ node }, index) => (
-          <Row className={node._id}>
-            {index % 2 === 0 ? (
-              <Col key={index} lg="4">
-                {node.image ? (
-                  <Img fluid={node.image.childImageSharp.fluid} />
-                ) : null}
-              </Col>
-            ) : null}
-            <Col>
+          <Carousel.Item className={node._id}>
+                <Img fluid={node.image.childImageSharp.fluid} />
+            <Carousel.Caption>
               <h3>{node.title}</h3>
               <RichText serialized={node.text.react} />
-            </Col>
-            {index % 2 !== 0 ? (
-              <Col key={index} lg="4">
-                <Img fluid={node.image.childImageSharp.fluid} />
-              </Col>
-            ) : null}
-          </Row>
+            </Carousel.Caption>
+          </Carousel.Item>
         ))}
+      </Carousel>
+      <Container>
       {data.allPloneDocument.edges
         .filter(item => item.node._id === 'nos-outils')
         .map(({ node }) => (
