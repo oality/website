@@ -59,10 +59,10 @@ const IndexPage = ({ data }) => (
           .concat(data.allPloneFolder.edges, { node: data.ploneDocument })
           .map(({ node }, index) => (
             <Col as={Link} key={index} to={node._path} lg="4" md="6">
-              <Img fluid={node.image.childImageSharp.fluid} />
               <Row className="text-center justify-content-center font-weight-bold p-3">
                 {node.title}
               </Row>
+              <Img fluid={node.image.childImageSharp.fluid} />
               <Row className="text-center justify-content-center p-3">
                 {node.description}
               </Row>
