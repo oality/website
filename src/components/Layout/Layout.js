@@ -31,13 +31,11 @@ const Layout = ({ breadcrumbs, children, data }) => (
         : null;
       return (
         <>
-          <Helmet
-            title={data.site.siteMetadata.title}
-            meta={[
-              { name: 'description', content: 'Gatsby Starter for Plone' },
-              { name: 'keywords', content: 'gatsby, plone' },
-            ]}
-          />
+          <Helmet>
+            <title>{data.site.siteMetadata.title}</title>
+            <meta name="description" content="Gatsby Starter for Plone" />
+            <meta name="keywords" content="gatsby, plone" />
+          </Helmet>
           <NavBar active={active} />
           <Header siteData={data.site.siteMetadata} />
           {breadcrumbs && <Breadcrumbs data={breadcrumbs} />}
