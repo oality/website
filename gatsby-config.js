@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Vos solutions informatiques',
     subTitle: 'Ouvertes et de qualités',
-    author: 'Bneoît Suttor',
+    author: 'Benoît Suttor',
   },
   pathPrefix: '/',
   plugins: [
@@ -36,12 +36,6 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     `gatsby-plugin-sass`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "G-FTYLJBXZEE",
-      },
-    },
     {
       resolve: 'gatsby-plugin-react-leaflet',
       options: {
